@@ -1,0 +1,62 @@
+body {
+    overflow-y: auto;
+}
+
+.wrapper {
+    margin-left: 220px;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
+    align-content: space-between;
+}
+
+.wrapper {
+    margin-left: 220px;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
+    align-content: space-between;
+}
+
+.hText {
+    text-anchor: start;
+    font-family: Arial;
+    font-size: large;
+    font-weight: bold;
+    stroke: none;
+    stroke-width: 0;
+    fill: #000000;
+}
+
+td,
+th {
+    border: 1px solid black;
+}
+
+#CellFailed {
+    background-color: red;
+}
+
+.hText {
+    text-anchor: start;
+    font-family: Arial;
+    font-size: large;
+    font-weight: bold;
+    stroke: none;
+    stroke-width: 0;
+    fill: #000000;
+}
+
+tr,
+tr:hover {
+    background-color: green;
+}
+
+#ROW {
+    font-size: smaller;
+    height: 30%;
+}
+
+#CellFailed {
+    background-color: red;
+}

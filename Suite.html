@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang=" en-GB">
+
+<head>
+    <title>Project Task-Suite</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.7/css/all.css">
+    <link href="stylesheet.css" rel="stylesheet" type="text/css" media="screen" />
+
+</head>
+
+<body>
+    <nav class="navbar fixed-top bg-primary container-fluid">
+        <div class="dropdown user">
+            <button class="dropbtn"><i class="far fa-user fa-2x"></i>
+                <i class="fas fa-sort-down fa-xs" ></i>
+            </button>
+            <div class="dropdown-content">
+                <a href="Dashboard.html">User</a>
+                <a href="All-Dash.html">Manager</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Sidebar -->
+    <div class="sidebar-container">
+        <div class="sidebar-logo">
+            Quick Links
+        </div>
+        <ul class="sidebar-navigation">
+            <li class="header">Navigation</li>
+            <li>
+                <a href="file:///C:/Users/aranwar/Desktop/C&C/Homepage.html">
+                    <i class="fa fa-home" aria-hidden="true"></i> Homepage
+                </a>
+            </li>
+            <li>
+                <a href="file:///C:/Users/aranwar/Desktop/C&C/Dashboard.html">
+                    <i class="fa fa-tachometer" aria-hidden="true"></i> Dashboard
+                </a>
+            </li>
+            <li class="header">Another Menu</li>
+            <li>
+                <a href="#">
+                    <i class="fa fa-users" aria-hidden="true"></i> Test Result
+                </a>
+            </li>
+            <li>
+                <a href="file:///C:/Users/aranwar/Desktop/C&C/History.html">
+                    <i class="fa fa-history" aria-hidden="true"></i> History
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fa fa-info-circle" aria-hidden="true"></i> Information
+                </a>
+            </li>
+        </ul>
+    </div>
+    <!-- Sidebar Ends-->
+
+    <h1 text-align="centre"><strong>CnC</strong></h1>
+    <h3>Test Case Execution</h3>
+    <br>
+    <h5 style=" text-align: left; margin-left: 311px;">Select the Test Case to execute :</h5>
+    <div class=" container form-check" padding="50px 30px">
+        <div class="table-responsive">
+            <table class="table table-striped table-bordered">
+                <tr class="thead-dark">
+                    <th><input type="checkbox" onchange="checkAll(this)" name="chk[]" /></th>
+                    <th>Test Case</th>
+                    <th>Description</th>
+                    <th>Status</th>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="custom-control custom-checkbox">
+                            <input style="text-align: center;" type="checkbox" class="custom-control-input" id="customCheck1">
+                            <!--<label class="custom-control-label" for="customCheck1">1.</label>-->
+                        </div>
+                    </td>
+                    <td>Login Application</td>
+                    <td>Verify Login functionality</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="custom-control custom-checkbox">
+                            <input style="text-align: center;" type="checkbox" class="custom-control-input" id="customCheck1">
+                            <!-- <label class="custom-control-label" for="customCheck1">2.</label>-->
+                        </div>
+                    </td>
+                    <td>Create Project</td>
+                    <td>Verify Create New Project functionality</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="custom-control custom-checkbox">
+                            <input style="text-align: center;" type="checkbox" class="custom-control-input" id="customCheck1">
+                            <!-- <label class="custom-control-label" for="customCheck1">3.</label>-->
+                        </div>
+                    </td>
+                    <td>Modify Project</td>
+                    <td>Verify Modify Project functionality</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="custom-control custom-checkbox">
+                            <input style="text-align: center;" type="checkbox" class="custom-control-input" id="customCheck1">
+                            <!-- <label class="custom-control-label" for="customCheck1">4.</label>-->
+                        </div>
+                    </td>
+                    <td>Delete Project</td>
+                    <td>Verify Delete Project Functionality</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="customCheck1">
+                            <!--  <label class="custom-control-label" for="customCheck1">5.</label>-->
+                        </div>
+                    </td>
+                    <td>Create Approval</td>
+                    <td>Verify Create Approval functionality</td>
+                    <td></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <span></span> &nbsp; &nbsp;
+    <span></span>
+    <div class="center" onclick="setColor()">
+        <button class="button btn btn--small ">
+       Execute</button>
+
+        <span></span>&nbsp;&nbsp;&nbsp;
+        <button class="btn btn--small button">
+        Clear</button><span></span>
+
+    </div>
+    <br><br>
+
+    <script>
+        function executeTest() {
+            var testCases = document.getElementsByName('rdbtn');
+            var testCase;
+            for (var i = 0; i < testCases.length; i++) {
+                if (testCases[i].checked) {
+                    testCase = testCases[i].value;
+                }
+            }
+            alert("Your request has been received.");
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    alert("done");
+                }
+            };
+            xhttp.open("GET", "http://localhost:8080/execute?testCase=" + testCase, true);
+            xhttp.send();
+        }
+        /*Check all script*/
+        function checkAll(ele) {
+            var checkboxes = document.getElementsByTagName('input');
+            if (ele.checked) {
+                for (var i = 0; i < checkboxes.length; i++) {
+                    if (checkboxes[i].type == 'checkbox') {
+                        checkboxes[i].checked = true;
+                    }
+                }
+            } else {
+                for (var i = 0; i < checkboxes.length; i++) {
+                    console.log(i)
+                    if (checkboxes[i].type == 'checkbox') {
+                        checkboxes[i].checked = false;
+                    }
+                }
+            }
+        }
+
+
+
+        function setColor() {
+            var count = 1;
+            var property = document.getElementById(btn);
+            if (count == 0) {
+                property.style.backgroundColor = "#FFFFFF"
+                count = 1;
+            } else {
+                property.style.backgroundColor = "#7FFF00"
+                count = 0;
+            }
+        }
+    </script>
+
+</body>
+
+<!--Foooter Starts-->
+<!--<footer class="mainfooter">
+    <div class="col-md-3 col-sm-6">
+        
+        <div class="footer-pad foot">
+            <h4>Resources</h4>
+            <ul class="list-unstyled">
+                <li><a href="#">Home</a></li>
+        <li><a href="#">Payment Center</a></li>
+        <li><a href="#">Contact Us</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">FAQs</a></li>
+        </ul>
+    </div>
+    </div>-->
+<!--This should be on the right as icons-->
+<!--<div class="row">
+        <div class="col-md-14 copy">
+            <p class="text-center">&copy; Copyright:2021 Zensar Technologies Ltd. CIN:L72200PN1963PLC012621. All
+                Rights Reserved</p>
+        </div>
+    </div>
+</footer>-->

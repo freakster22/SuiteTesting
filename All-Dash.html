@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en-GB-US">
+
+<head>
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.7/css/all.css">
+    <link rel="stylesheet" type="text/css" href="http://www.shieldui.com/shared/components/latest/css/light/all.min.css" />
+    <link href="stylesheet.css" rel="stylesheet" type="text/css" media="screen" />
+    <link href="dash-style.css" rel="stylesheet" type="text/css" media="screen" />
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+</head>
+
+<body>
+    <nav class="navbar fixed-top bg-primary container-fluid">
+        <div class="dropdown user">
+            <button class="dropbtn"><i class="far fa-user fa-2x"></i>
+                <i class="fas fa-sort-down fa-xs" ></i>
+            </button>
+            <div class="dropdown-content">
+                <a href="Dashboard.html">User</a>
+                <a href="All-Dash.html">Manager</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Sidebar -->
+    <div class="sidebar-container">
+        <div class="sidebar-logo">
+            Quick Links
+        </div>
+        <ul class="sidebar-navigation">
+            <li class="header">Application</li>
+            <li>
+                <a href="file:///C:/Users/aranwar/Desktop/C&C/Homepage.html">
+                    <i class="fa fa-home" aria-hidden="true"></i> Homepage
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fa fa-tachometer" aria-hidden="true"></i> Dashboard
+                </a>
+            </li>
+            <li class="header">Another Menu</li>
+            <li>
+                <a href="#">
+                    <i class="fa fa-users" aria-hidden="true"></i> Test Result
+                </a>
+            </li>
+            <li>
+                <a href="file:///C:/Users/aranwar/Desktop/C&C/History.html">
+                    <i class="fa fa-history" aria-hidden="true"></i> History
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fa fa-info-circle" aria-hidden="true"></i> Information
+                </a>
+            </li>
+        </ul>
+    </div>
+    <!-- Sidebar Ends-->
+
+    <!--charts-->
+    <div class="wrapper">
+        <div id="columnchart_material" style="width: 540px; height: 400px; padding-left: 40px;"></div>
+        <div id="columnchart_material2" style="width: 540px; height: 400px; padding-left: 40px;"></div>
+
+        <div id="columnchart_material3" style="width: 540px; height: 400px; padding-left: 40px;"></div>
+        <div id="columnchart_material4" style="width: 540px; height: 400px; padding-left: 40px;"></div>
+    </div>
+
+</body>
+
+
+<!--Column chart script -----------CnC-->
+<script type="text/javascript">
+    google.charts.load('current', {
+        'packages': ['bar']
+    });
+    google.charts.setOnLoadCallback(drawChart);
+
+    function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+            ['', 'Passed', 'Failed'],
+            ['Rel1.1', 420, 88],
+            ['Rel1.2', 65, 17],
+            ['Rel2.1', 153, 28],
+            ['Rel3.1', 213, 69]
+        ]);
+
+        var options = {
+            chart: {
+                title: 'CnC',
+                subtitle: 'Case History',
+            }
+        };
+
+        var chart = new google.charts.Bar(document.getElementById('columnchart_material'));
+
+        chart.draw(data, google.charts.Bar.convertOptions(options));
+    }
+</script>
+<!--Column chart Script --------Scope ------>
+<script>
+    google.charts.load('current', {
+        'packages': ['bar']
+    });
+    google.charts.setOnLoadCallback(drawChart);
+
+    function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+            ['', 'Passed', 'Failed'],
+            ['Rel1.1', 420, 97],
+            ['Rel2.1', 469, 128],
+            ['Rel2.2', 126, 17],
+            ['Rel2.3', 250, 36]
+        ]);
+
+        var options = {
+            chart: {
+                title: 'SCoPE',
+                subtitle: 'Case History',
+            }
+        };
+
+        var chart = new google.charts.Bar(document.getElementById('columnchart_material2'));
+
+        chart.draw(data, google.charts.Bar.convertOptions(options));
+    }
+</script>
+<!--Column chart Script Ends-->
+<!--Column chart Script ----------Audit ----------->
+<script>
+    google.charts.load('current', {
+        'packages': ['bar']
+    });
+    google.charts.setOnLoadCallback(drawChart);
+
+    function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+            ['', 'Passed', 'Failed'],
+            ['Rel1.0', 40, 8],
+            ['Rel2.0', 37, 12],
+            ['Rel3.0', 68, 21],
+            ['Rel4.0', 75, 12]
+        ]);
+
+        var options = {
+            chart: {
+                title: 'Audit',
+                subtitle: 'Case History',
+            }
+        };
+
+        var chart = new google.charts.Bar(document.getElementById('columnchart_material3'));
+
+        chart.draw(data, google.charts.Bar.convertOptions(options));
+    }
+</script>
+<!--Column chart Script Ends-->
+<!--Column chart Script-->
+<script>
+    google.charts.load('current', {
+        'packages': ['bar']
+    });
+    google.charts.setOnLoadCallback(drawChart);
+
+    function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+            ['', 'Passed', 'Failed'],
+            ['Rel1.1', 20, 7],
+            ['Rel1.2', 58, 23],
+            ['Rel1.3', 126, 17],
+            ['Rel1.4', 150, 36]
+        ]);
+
+        var options = {
+            chart: {
+                title: 'TL9K',
+                subtitle: 'Case History',
+            }
+        };
+
+        var chart = new google.charts.Bar(document.getElementById('columnchart_material4'));
+
+        chart.draw(data, google.charts.Bar.convertOptions(options));
+    }
+</script>
+
+</html>

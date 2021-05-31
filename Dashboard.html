@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en-GB-US">
+
+<head>
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.7/css/all.css">
+    <link rel="stylesheet" type="text/css" href="http://www.shieldui.com/shared/components/latest/css/light/all.min.css" />
+    <link href="stylesheet.css" rel="stylesheet" type="text/css" media="screen" />
+    <link href="dash-style.css" rel="stylesheet" type="text/css" media="screen" />
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+</head>
+
+<body>
+    <nav class="navbar fixed-top bg-primary container-fluid">
+        <div class="dropdown user">
+            <button class="dropbtn"><i class="far fa-user fa-2x"></i>
+                <i class="fas fa-sort-down fa-xs" ></i>
+            </button>
+            <div class="dropdown-content">
+                <a href="Dashboard.html">User</a>
+                <a href="All-Dash.html">Manager</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Sidebar -->
+    <div class="sidebar-container">
+        <div class="sidebar-logo">
+            Quick Links
+        </div>
+        <ul class="sidebar-navigation">
+            <li class="header">Application</li>
+            <li>
+                <a href="file:///C:/Users/aranwar/Desktop/C&C/Homepage.html">
+                    <i class="fa fa-home" aria-hidden="true"></i> Homepage
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fa fa-tachometer" aria-hidden="true"></i> Dashboard
+                </a>
+            </li>
+            <li class="header">Another Menu</li>
+            <li>
+                <a href="#">
+                    <i class="fa fa-users" aria-hidden="true"></i> Test Result
+                </a>
+            </li>
+            <li>
+                <a href="file:///C:/Users/aranwar/Desktop/C&C/History.html">
+                    <i class="fa fa-history" aria-hidden="true"></i> History
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fa fa-info-circle" aria-hidden="true"></i> Information
+                </a>
+            </li>
+        </ul>
+    </div>
+    <!-- Sidebar Ends-->
+
+    <!--charts-->
+    <div class="wrapper">
+        <div id="piechart_3d" style="width: 500px; height: 370px;"></div>
+        <div id="barchart_material" style="width: 600px; height: 400px; margin-bottom: 15px; margin-left: -20px;"></div>
+
+        <div id="donutchart" style="width: 500px; height: 350px;"></div>
+        <div id="table" style="margin-top: -20px; align-self: center;">
+            <table>
+                <caption>Testing Release HeatMap</caption>
+                <tr>
+                    <th></th>
+                    <th>REL 1.1</th>
+                    <th>REL 1.2</th>
+                    <th>REL 2.1</th>
+                    <th>REL 2.2</th>
+                    <th>REL 2.3</th>
+                </tr>
+                <tr id="ROW">
+                    <th>Manage Approval</th>
+                    <td></td>
+                    <td></td>
+                    <td id="CellFailed"></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr id="ROW">
+                    <th>Manage NEBS Approval</th>
+                    <td></td>
+                    <td></td>
+                    <td id="CellFailed"></td>
+                    <td id="CellFailed"></td>
+                    <td></td>
+                </tr>
+                <tr id="ROW">
+                    <th>Search Console</th>
+                    <td></td>
+                    <td id="CellFailed"></td>
+                    <td></td>
+                    <td></td>
+                    <td id="CellFailed"></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+</body>
+<!-- PIE CHART-3D SCRIPT-->
+<script type="text/javascript">
+    // Load google charts
+    google.charts.load('current', {
+        'packages': ['corechart']
+    });
+    google.charts.setOnLoadCallback(drawChart);
+    // Draw the chart and set the chart values
+    function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+            ['Test', 'Test Summary'],
+            ['Passed', 74],
+            ['Blocked', 21],
+            ['Failed', 26],
+            ['Retest', 2],
+        ]);
+
+        // Optional; add a title and set the width and height of the chart
+        var options = {
+            'title': 'C&C Automation',
+            is3D: true,
+            'width': 450,
+            'height': 450,
+            'fontSize': 13
+        };
+
+        // Display the chart inside the <div> element with id="piechart "
+        var chart = new google.visualization.PieChart(document.getElementById('piechart_3d'));
+        chart.draw(data, options);
+    }
+</script>
+<!--PIE script ends-->
+
+
+
+<!--BAR chart script-->
+<script type="text/javascript">
+    google.charts.load('current', {
+        'packages': ['bar']
+    });
+    google.charts.setOnLoadCallback(drawStacked);
+    // Draw the chart and set the chart values
+    function drawStacked() {
+        var data = google.visualization.arrayToDataTable([
+            ['Browser', 'Firefox', 'Chrome', 'Safari'],
+            ['Manage Project', 35, 23, 15],
+            ['Manage Approval', 47, 45, 43],
+            ['Manage NEBS Approval', 19, 19, 15],
+            ['Search Console', 39, 37, 37],
+            ['Manage Document', 50, 50, 48]
+        ]);
+        var options = {
+            chart: {
+                title: 'Test Browser success rate',
+                subtitle: 'Browsers',
+                bar: {
+                    groupWidth: '75%'
+                },
+
+            },
+            bars: 'horizontal' // Required for Material Bar Charts.
+
+        };
+
+        var chart = new google.charts.Bar(document.getElementById('barchart_material'));
+
+        chart.draw(data, google.charts.Bar.convertOptions(options));
+    }
+</script>
+<!--Donut chart Script-->
+<script type="text/javascript ">
+    google.charts.load("current", {
+        packages: ["corechart"]
+    });
+    google.charts.setOnLoadCallback(drawChart);
+
+    function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+            ['Env', 'Success Rate'],
+            ['Windows', 11],
+            ['Mac', 8],
+            ['Linux', 15],
+        ]);
+
+        var options = {
+            title: 'Env Specific Results',
+            pieHole: 0.35,
+            'fontSize': 13
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
+        chart.draw(data, options);
+    }
+</script>
+<!--Donut chart Script Ends-->
+
+</html>
